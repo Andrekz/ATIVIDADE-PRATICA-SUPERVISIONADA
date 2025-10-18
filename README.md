@@ -8,7 +8,7 @@ Alunos:
 - Luis Gustavo Freitas Kulzer
 
 
-Classe Fila
+# Classe Fila
 
 Responsável por controlar a ordem de atendimento dos clientes.
 
@@ -30,7 +30,7 @@ exibirFila(): mostra toda a ordem atual de atendimento.
 
 
 
-Classe Pilha
+# Classe Pilha
 
 Controla o histórico de solicitações.
 
