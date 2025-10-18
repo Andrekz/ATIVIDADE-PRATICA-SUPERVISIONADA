@@ -47,3 +47,23 @@ remover(): retira a solicitação mais recente (última adicionada).
 vazia(): verifica se o histórico está vazio.
 
 exibirPilha(): mostra todas as solicitações registradas.
+
+
+# Classe Main
+
+Cada arquivo contém um main() com um menu interativo simples, que permite ao usuário:
+
+Inserir novos registros;
+
+Remover elementos (atendimento ou solicitação);
+
+Visualizar a fila ou o histórico a qualquer momento;
+
+Encerrar o programa.
+
+
+# Resumo das estruturas
+
+A fila organiza o atendimento em ordem de chegada.
+
+A pilha registra e permite consultar o histórico de solicitações.
