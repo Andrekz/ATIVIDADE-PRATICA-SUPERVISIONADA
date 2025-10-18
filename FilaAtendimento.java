@@ -1,0 +1,98 @@
+
+class Elemento {
+    String id;
+    String nome;
+    String motivo;
+
+    public Elemento(String id, String nome, String motivo) {
+        this.id = id;
+        this.nome = nome;
+        this.motivo = motivo;
+    }
+}
+
+
+class No {
+    Elemento elemento;
+    No proximo;
+
+    public No(Elemento elemento) {
+        this.elemento = elemento;
+        this.proximo = null;
+    }
+}
+
+
+class Fila {
+    private No inicio;
+    private No fim;
+
+    public Fila() {
+        this.inicio = null;
+        this.fim = null;
+    }
+
+    public boolean vazia() {
+        return inicio == null;
+    }
+
+    public void enfileirar(Elemento elemento) {
+        No novo = new No(elemento);
+        if (vazia()) {
+            inicio = novo;
+            fim = novo;
+        } else {
+            fim.proximo = novo;
+            fim = novo;
+        }
+    }
+
+    public Elemento desenfileirar() {
+        if (vazia()) {
+            System.out.println("A fila está vazia!");
+            return null;
+        }
+        Elemento e = inicio.elemento;
+        inicio = inicio.proximo;
+        if (inicio == null) {
+            fim = null;
+        }
+        return e;
+    }
+
+    public void exibirFila() {
+        if (vazia()) {
+            System.out.println("Fila vazia!");
+            return;
+        }
+        No atual = inicio;
+        System.out.println("\n--- Ordem de Atendimento ---");
+        while (atual != null) {
+            System.out.println(atual.elemento.id + " - " + atual.elemento.nome + " (" + atual.elemento.motivo + ")");
+            atual = atual.proximo;
+        }
+    }
+}
+
+
+public class FilaAtendimento {
+    public static void main(String[] args) {
+
+        Fila fila = new Fila();
+
+        fila.enfileirar(new Elemento("CLI001", "Maria Silva", "Dúvida sobre produto"));
+        fila.enfileirar(new Elemento("CLI002", "João Souza", "Reclamação de serviço"));
+        fila.enfileirar(new Elemento("CLI003", "Ana Costa", "Solicitação de reembolso"));
+        fila.enfileirar(new Elemento("CLI004", "Pedro Alves", "Informações de entrega"));
+
+        fila.exibirFila();
+
+        System.out.println("\nAtendendo cliente...");
+        Elemento atendido = fila.desenfileirar();
+        if (atendido != null) {
+            System.out.println("Cliente atendido: " + atendido.nome);
+        }
+
+        fila.exibirFila();
+    }
+}
